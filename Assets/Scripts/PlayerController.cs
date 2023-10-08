@@ -26,16 +26,16 @@ public class PlayerController : MonoBehaviour
         {
             Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
             rigidbody.AddForce(0, 300, 0);
+            rigidbody.angularVelocity = new Vector3(2, 0, 0);
         }
 
-        transform.Translate(0, 0, speed);
+        transform.Translate(0, 0, speed, Space.World );
     }
 
     bool IsTouchingGround()
     {
-        int layerMask = LayerMask.NameToLayer("Ground");
-        Physics.CheckBox(transform.position, transform.lossyScale / 1.99f, transform.rotation, layerMask);
-        return true;
+        int layerMask = LayerMask.GetMask("Ground");
+        return Physics.CheckBox(transform.position, transform.lossyScale / 1.99f, transform.rotation, layerMask);
     }
 }
    
