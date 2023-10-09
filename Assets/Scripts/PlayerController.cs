@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0.02f; // Field, not Var
     
     
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
         Vector3 velocity = rigidbody.velocity;
@@ -19,12 +19,14 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    public void Update()
     {
         float jumpForce = 200;
-        if (Input.GetButtonDown("Jump") && IsTouchingGround())
+        if (Input.GetButton("Jump") && IsTouchingGround())
         {
             Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+            Vector3 velocity = rigidbody.velocity;
+            velocity.y = jumpForce;
             rigidbody.AddForce(0, jumpForce, 0);
             rigidbody.angularVelocity = new Vector3(2, 0, 0);
         }
