@@ -13,19 +13,20 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody.AddForce(0, -10, 0);
         }
+
+        rigidbody.velocity = new Vector3(rigidbody.velocity.x, rigidbody.velocity.y, speed);
     }
 
     // Update is called once per frame
-    public void Update()
+    private void Update()
     {
+        float jumpForce = 200;
         if (Input.GetButtonDown("Jump") && IsTouchingGround())
         {
             Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
-            rigidbody.AddForce(0, 300, 0);
+            rigidbody.AddForce(0, jumpForce, 0);
             rigidbody.angularVelocity = new Vector3(2, 0, 0);
         }
-
-        transform.Translate(0, 0, speed, Space.World );
     }
 
     bool IsTouchingGround()
