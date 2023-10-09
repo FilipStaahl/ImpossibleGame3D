@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        Vector3 velocity = rigidbody.velocity;
         if (rigidbody.velocity.y < -.1f)
         {
             rigidbody.AddForce(0, -10, 0);
