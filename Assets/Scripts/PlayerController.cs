@@ -21,13 +21,13 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        float jumpForce = 200;
+        float jumpForce = 5;
         if (Input.GetButton("Jump") && IsTouchingGround())
         {
             Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
             Vector3 velocity = rigidbody.velocity;
             velocity.y = jumpForce;
-            rigidbody.AddForce(0, jumpForce, 0);
+            rigidbody.velocity = velocity;
             rigidbody.angularVelocity = new Vector3(2, 0, 0);
         }
     }
